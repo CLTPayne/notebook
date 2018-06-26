@@ -1,12 +1,9 @@
 (function(exports) {
   function testNoteSavesContent() {
-    var note = new Note();
-    note.save("Buy milk");
-    assert.isTrue(note.text === "Buy milk");
+    var note = new Note("Buy milk");
+    assert.isTrue(note.getText() === "Buy milk");
 
   };
 
   testNoteSavesContent();
 })(this);
-
-// Add test for getText function

@@ -5,7 +5,7 @@
     this.noteHTML = [];
   };
 
-  NoteListView.prototype.returnHTML = function() {
+  NoteListView.prototype.returnNoteListHTML = function() {
     this.noteHTML.push("<ul>");
     for(var i = 0; i < this.noteList['noteArray'].length; i++) {
       this.noteHTML.push("<li><div>" + this.noteList['noteArray'][i]['text'] + "</div></li>")

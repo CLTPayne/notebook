@@ -27,4 +27,26 @@
 
   testNoteListViewReturnsAStringOfHTML();
 
+  function testNoteControllerCanBeInstantiated() {
+    var noteList = new NoteList();
+    noteList.addNote("Favourite drink: water");
+    var noteController = new NoteController(noteList);
+    assert.isTrue(noteController)
+    console.log('Test Passes')
+  };
+
+  testNoteControllerCanBeInstantiated();
+
+  function testNoteControllerAddsNoteToApp() {
+    var noteList = new NoteList();
+    noteList.addNote("Favourite drink: coffee");
+    var noteController = new NoteController(noteList);
+    noteController.insertHTML();
+    var element = document.getElementById('app');
+    console.log(element)
+    asset.isTrue(element.innerHTML === "<ul><li><div>Favourite food: pesto</div></li></ul>")
+  };
+
+  testNoteControllerAddsNoteToApp();
+
 })(this);

@@ -7,6 +7,14 @@
 
   testNoteSavesContent();
 
+  function testNoteInitializesWithId() {
+    var note = new Note("Go swimming!", 0);
+    assert.isTrue(note.getId() === 0);
+    console.log('Test for note having a unique ID passes');
+  };
+
+  testNoteInitializesWithId();
+
   function testNoteListCanHoldNotes() {
     var noteList = new NoteList();
     noteList.addNote("Go shopping!");

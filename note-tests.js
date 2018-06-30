@@ -2,7 +2,7 @@
   function testNoteSavesContent() {
     var note = new Note("Buy milk");
     assert.isTrue(note.getText() === "Buy milk");
-    console.log('Test passes');
+    console.log('Test for note saving content passes');
   };
 
   testNoteSavesContent();
@@ -11,7 +11,7 @@
     var noteList = new NoteList();
     noteList.addNote("Go shopping!");
     assert.isTrue(noteList.noteArray[0]['text'] === "Go shopping!");
-    console.log('Test passes');
+    console.log('Test for note list holds passes');
   };
 
   testNoteListCanHoldNotes();
@@ -26,6 +26,17 @@
   };
 
   testNoteListViewReturnsAStringOfHTML();
+
+
+  function testNoteListViewReturnsTruncateNote() {
+    var noteList = new NoteList();
+    noteList.addNote("Go shopping on Monday and don't forget to buy milk!")
+    var noteListView = new NoteListView(noteList);
+    assert.isTrue(noteListView.returnNoteListHTML().includes("Go shopping on Monda..."))
+    console.log('Test passes');
+  }
+
+  testNoteListViewReturnsTruncateNote();
 
   function testNoteControllerCanBeInstantiated() {
     var noteList = new NoteList();
@@ -47,6 +58,7 @@
     noteController.noteListView.returnNoteListHTML = function stubReturnHTML() {
       return HTMLText;
     }
+    // The above is overwriting the original behaviour / function in the memory of the test
     noteController.insertHTML();
     var element = document.getElementById('app').innerHTML;
 
